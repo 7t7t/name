@@ -1,0 +1,39 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/person/person",
+    "pages/upvote/upvote",
+    "pages/sort/sort",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "取好名",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "selectedColor": "#000000",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "首页",
+      "iconPath": "img/foot_a.png",
+      "selectedIconPath": "img/foot.png"
+    },{
+      "pagePath": "pages/person/person",
+      "text": "起名",
+      "iconPath": "img/person_a.png",
+      "selectedIconPath": "img/person.png"
+    },{
+      "pagePath": "pages/upvote/upvote",
+      "text": "好名",
+      "iconPath": "img/upvote_a.png",
+      "selectedIconPath": "img/upvote.png"
+    },{
+      "pagePath": "pages/sort/sort",
+      "text": "排行",
+      "iconPath": "img/sort_a.png",
+      "selectedIconPath": "img/sort.png"
+    }]
+  }
+}
