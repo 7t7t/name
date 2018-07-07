@@ -4,7 +4,7 @@ Page({
   /**
    * 页面的初始数据
    */
-  data: {
+   data: {
     icons: {
       firstName: '/img/foo.png',
       lastName: '/img/foo.png'
@@ -14,85 +14,36 @@ Page({
     secondWord: '云',
     thirdWord: '夕',
     names: [],
+    namesIndex: 0,
     showList: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  bindPickerChange: function (e) {
+    this.setData({
+      namesIndex: e.detail.value
+    })
   },
   /**
    * 用户离开点击后设值到data
    */
-  setTexts: function (e) {
+   setTexts: function (e) {
     let that = this;
     let id = e.currentTarget.id;
     this.setData({
       [id]:  e.detail.value
     })
+    this.generateFullName();
   },
   /**
    * 弹框事件
    */
-  onClickBtn: function (e) {
+   onClickBtn: function (e) {
     let data = this.data;
 
     if ((data.texts.includes(data.secondWord) && !data.thirdWord)
-        || (data.texts.includes(data.thirdWord) && !data.second)
-        ) {
+      || (data.texts.includes(data.thirdWord) && !data.second)
+      ) {
       this.toast('已经生成！');
-      this.generateName();
+      // this.generateName();
     } else {
       this.toast('没有符合条件的名字!');
     }
@@ -100,7 +51,7 @@ Page({
   /**
    * 再次封装弹框
    */
-  toast: function (title, duration, successCallBack, failCallBack) {
+   toast: function (title, duration, successCallBack, failCallBack) {
     let that = this;
     wx.showToast({
       title: title || '成功',
@@ -120,12 +71,99 @@ Page({
   /**
    * 循环生成
    */
-  generateName: function () {
-    let that = this;
+   generateName: function () {
     let data = this.data;
-    that.setData({
+    this.setData({
       names : data.texts.split(''),
       showList : true
     })
-  }
-})
+  },
+  /**
+   * 生成全名数组
+   */
+   generateFullName: function () {
+    let data = this.data;
+    let words = data.texts.split('');
+    let names = [];
+    words.reduce(function(pre, word){
+      let name
+        // 指定第二个字
+        if (data.secondWord && !data.thirdWord) {
+          name = data.firstWord + data.secondWord + word;
+          names.push(name);
+        // 指定每第三个字
+      } else if (data.thirdWord && !data.secondWord) {
+        name = data.firstWord + word + data.thirdWord;
+        names.push(name);
+        // 指定第二和第三个字
+      } else if (data.secondWord && data.thirdWord){
+        names = [ data.firstWord + data.secondWord + data.thirdWord ];
+        // 全部输出
+      } else {
+        for(let i=0; i<words.length; i++) {
+          name = data.firstWord + word + words[i];
+          names.push(name);
+        }
+      }
+    });
+    console.log(names)
+    this.setData({
+      names: names,
+      showList: true
+    })
+  },
+  /**
+   * 生命周期函数--监听页面加载
+   */
+   onLoad: function (options) {
+    this.generateFullName()
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+   onReady: function () {
+   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+   onShow: function () {
+
+   },
+
+  /**
+   * 生命周期函数--监听页面隐藏
+   */
+   onHide: function () {
+
+   },
+
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+   onUnload: function () {
+
+   },
+
+  /**
+   * 页面相关事件处理函数--监听用户下拉动作
+   */
+   onPullDownRefresh: function () {
+
+   },
+
+  /**
+   * 页面上拉触底事件的处理函数
+   */
+   onReachBottom: function () {
+
+   },
+
+  /**
+   * 用户点击右上角分享
+   */
+   onShareAppMessage: function () {
+
+   }
+ })

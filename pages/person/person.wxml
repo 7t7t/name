@@ -14,7 +14,7 @@
   <view class="weui-cells weui-cells_after-title width_100">
     <view class="weui-cell">
       <view class="weui-cell__bd">
-        <textarea class="weui-textarea width_100 font_size14" placeholder="请输入文本" value="{{texts}}" id="texts" bindinput="setTexts"/>
+        <textarea class="weui-textarea max_height_80 width_100 font_size14" placeholder="请输入文本" value="{{texts}}" id="texts" bindinput="setTexts"/>
         <view class="weui-textarea-counter">{{texts.length}}/200</view>
       </view>
     </view>
@@ -29,7 +29,7 @@
       </view>
     </view>
   </view>
-    <!-- 第三个字 -->
+  <!-- 第三个字 -->
   <view class="text_left width_100 weui-cells__title"><image src="{{icons.firstName}}" class='title_icon'></image>指定第三个字</view>
   <view class="weui-cells weui-cells_after-title width_100">
     <view class="weui-cell">
@@ -40,15 +40,22 @@
     </view>
   </view>
   <!-- 生成按钮 -->
-   <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button> 
-
+  <!-- <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button> -->
+  <!-- 弹出展示 -->
+  <view  class="width_100">
+    <picker bindchange="bindPickerChange" value="{{index}}" range="{{names}}">
+      <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button>
+    </picker>
+  </view>
   <!-- 生成的列表 -->
-  <view wx:if="{{showList}}" class='width_100'>
+  <!-- <view wx:if="{{showList}}" class='width_100'>
     <view wx:for="{{names}}" wx:key="{{1+index}}" wx:for-item="second">
       <view  wx:for="{{names}}" wx:key="{{index}}" wx:for-item="third" wx:if="{{(second==secondWord && !thirdWord)||(third==thirdWord && !secondWord)||(second==secondWord && third==thirdWord) || (!secondWord && !thirdWord)}}" class="text_left width_100 weui-cells__title">
         <image src="{{icons.firstName}}" class="title_icon"></image>
         {{firstWord}}{{second}}{{third}}
       </view>
     </view>
-  </view>
+  </view> -->
+
+
 </view>
