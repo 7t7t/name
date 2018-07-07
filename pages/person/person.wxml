@@ -1,2 +1,54 @@
 <!--pages/person/person.wxml-->
-<text>pages/person/person.wxml</text>
+<view class='container'>
+  <!-- 姓氏 -->
+  <view class="text_left width_100 weui-cells__title"><image src="{{icons.firstName}}" class='title_icon'></image>姓氏</view>
+  <view class="weui-cells weui-cells_after-title width_100">
+    <view class="weui-cell weui-cell_input">
+      <view class="weui-cell__bd">
+        <input class="weui-input font_size14" value='黄' placeholder="请输入姓"  id="firstWord" bindinput="setTexts"/>
+      </view>
+    </view>
+  </view>
+  <!-- 名字 -->
+  <view class="text_left width_100 weui-cells__title"><image src="{{icons.firstName}}" class='title_icon'></image>您相要的字</view>
+  <view class="weui-cells weui-cells_after-title width_100">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea class="weui-textarea width_100 font_size14" placeholder="请输入文本" value="{{texts}}" id="texts" bindinput="setTexts"/>
+        <view class="weui-textarea-counter">{{texts.length}}/200</view>
+      </view>
+    </view>
+  </view>
+  <!-- 第二个字 -->
+  <view class="text_left width_100 weui-cells__title"><image src="{{icons.firstName}}" class='title_icon'></image>指定第二个字</view>
+  <view class="weui-cells weui-cells_after-title width_100 font_size14">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input class="weui-textarea width_100" placeholder="如需指定第二个字则输入" value="{{secondWord}}" id="secondWord" bindinput="setTexts"/>
+        <view class="weui-textarea-counter">{{secondWord.length}}/1</view>
+      </view>
+    </view>
+  </view>
+    <!-- 第三个字 -->
+  <view class="text_left width_100 weui-cells__title"><image src="{{icons.firstName}}" class='title_icon'></image>指定第三个字</view>
+  <view class="weui-cells weui-cells_after-title width_100">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <input class="weui-textarea width_100 font_size14" placeholder="如需指定第三个字则输入" value="{{thirdWord}}" id="thirdWord" bindinput="setTexts"/>
+        <view class="weui-textarea-counter">{{thirdWord.length}}/1</view>
+      </view>
+    </view>
+  </view>
+  <!-- 生成按钮 -->
+   <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button> 
+
+  <!-- 生成的列表 -->
+  <view wx:if="{{showList}}" class='width_100'>
+    <view wx:for="{{names}}" wx:key="{{1+index}}" wx:for-item="second">
+      <view  wx:for="{{names}}" wx:key="{{index}}" wx:for-item="third" wx:if="{{(second==secondWord && !thirdWord)||(third==thirdWord && !secondWord)||(second==secondWord && third==thirdWord) || (!secondWord && !thirdWord)}}" class="text_left width_100 weui-cells__title">
+        <image src="{{icons.firstName}}" class="title_icon"></image>
+        {{firstWord}}{{second}}{{third}}
+      </view>
+    </view>
+  </view>
+</view>

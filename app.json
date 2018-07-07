@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/index/index",
     "pages/person/person",
+    "pages/index/index",
+    
     "pages/upvote/upvote",
     "pages/sort/sort",
     "pages/logs/logs"
