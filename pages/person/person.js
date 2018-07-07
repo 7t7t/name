@@ -6,8 +6,13 @@ Page({
    */
    data: {
     icons: {
-      firstName: '/img/foo.png',
-      lastName: '/img/foo.png'
+      firstName: '/img/first_name.png',
+      first: '/img/first.png',
+      second: '/img/second.png',
+      third: '/img/third.png',
+      all: '/img/all.png',
+      edit: '/img/edit.png',
+      all_a: '/img/all_a.png'
     },
     texts: '夕云可麦言米舍里沐风充艾丝竹延栈巧乔禾听安予蔓临深望庭巡',
     firstWord: '黄',
