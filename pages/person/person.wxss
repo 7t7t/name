@@ -4,12 +4,22 @@
   margin-top: 0;
   color: #666;
 }
+.placeholder{
+    color: #ccc;
+    font-size: 12px;
+}
 .font_color{
   color: #666;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-weight: normal;
+}
+.wraper{
+  width: 100%;
+  margin: 0 auto;
 }
 .width_100{
   width: 98%;
-  margin: 2px auto;
+  margin: 0 auto;
 }
 .width_50{
   width: 48%;
@@ -19,7 +29,9 @@
 }
 .text_left{
   text-align: left;
-  float: left;
+}
+.text_center{
+  text-align: center;
 }
 .weui-cells__title{
   background: #f5f5f5;
@@ -49,7 +61,7 @@
   min-height: 60px;
 }
 .box_shadow{
-  box-shadow: 0 0 10px #ccc;
+  box-shadow: 0px 3px 3px #e5e5e5;
 }
 .border_none{
   border: none;
@@ -69,6 +81,9 @@
 .margin_left{
   margin-left: 1.5%;
 }
+.margin_left_12{
+  margin-left: 12px;
+}
 .margin_top_24{
   margin-top: 24px;
 }
@@ -80,4 +95,25 @@
 }
 .clear_both{
   clear: both;
+}
+.swiper{
+  width: 99%;
+  margin: 0 2px;
+  height: 80px;
+  border-radius: 4px;
+}
+.list_title_a{
+  background:  linear-gradient(to right, #fff 0%, #e5e5e5 10%, #FFFAF6 30%, #fff 80%);
+}
+.list_title_b{
+  background:  linear-gradient(to right, #fff 0%, #e5e5e5 10%, #FFFAF6 30%, #fff 80%);
+}
+.list_title_c{
+  background:  linear-gradient(to right, #fff 0%, #e5e5e5 10%, #FFFAF6 30%, #fff 80%);
+}
+.list_title_d{
+  background:  linear-gradient(to right, #fff 0%, #FFFAF6 50%, #fff 80%);
+}
+.margin_top_5{
+  margin-top: -5px;
 }

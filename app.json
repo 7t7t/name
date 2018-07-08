@@ -10,7 +10,7 @@
   "window":{
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "取好名",
+    "navigationBarTitleText": "取名",
     "navigationBarTextStyle":"black"
   },
   "tabBar": {

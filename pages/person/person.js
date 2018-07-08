@@ -14,18 +14,41 @@ Page({
       edit: '/img/edit.png',
       all_a: '/img/all_a.png'
     },
+    imgUrls: [
+      '/img/banner_a.jpg',
+      '/img/banner_b.jpg',
+      '/img/banner_c.jpg'
+    ],
+    animation: '',
+    indicatorDots: true,
+    autoplay: true,
+    interval: 5000,
+    duration: 1000,
     texts: '夕云可麦言米舍里沐风充艾丝竹延栈巧乔禾听安予蔓临深望庭巡',
     firstWord: '黄',
-    secondWord: '云',
-    thirdWord: '夕',
+    secondWord: '沐',
+    thirdWord: '',
     names: [],
     namesIndex: 0,
     showList: false
   },
+  /**
+   * 旋转动画
+   */
+  rotate: function () {
+    this.animation.rotate(90).step().scale(1.2).step().rotate(360).step().scale(1).step();
+    this.setData({
+      animation: this.animation.export()
+    })
+  },
+  /**
+   * 选择改变时
+   */
   bindPickerChange: function (e) {
     this.setData({
       namesIndex: e.detail.value
     })
+    this.rotate();
   },
   /**
    * 用户离开点击后设值到data
@@ -128,13 +151,19 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
    onReady: function () {
+     this.animation = wx.createAnimation({
+       duration: 1000,
+       timingFunction: 'linear',
+       delay: 100,
+       transformOrigin: 'center center'
+     })
+     this.rotate()
    },
 
   /**
    * 生命周期函数--监听页面显示
    */
    onShow: function () {
-
    },
 
   /**
