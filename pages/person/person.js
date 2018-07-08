@@ -19,7 +19,8 @@ Page({
       '/img/banner_b.jpg',
       '/img/banner_c.jpg'
     ],
-    animation: '',
+    animationRotate: '',
+    animationRotateA: '',
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
@@ -35,10 +36,18 @@ Page({
   /**
    * 旋转动画
    */
-  rotate: function () {
-    this.animation.rotate(90).step().scale(1.2).step().rotate(360).step().scale(1).step();
+  rotate: function (n) {
+    n = n || 8;
+    this.animationRotate.rotate(180 * (n)).step().scale(1.2).step().rotate(360).step().scale(1).step();
     this.setData({
-      animation: this.animation.export()
+      animationRotate: this.animationRotate.export()
+    })
+  },
+  rotateA: function (n) {
+    n = n || 20;
+    this.animationRotateA.rotate(180 * (n)).step().rotate(-180 * (n)).step();
+    this.setData({
+      animationRotateA: this.animationRotateA.export()
     })
   },
   /**
@@ -60,6 +69,7 @@ Page({
       [id]:  e.detail.value
     })
     this.generateFullName();
+    this.rotateA();
   },
   /**
    * 弹框事件
@@ -151,13 +161,20 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
    onReady: function () {
-     this.animation = wx.createAnimation({
+     this.animationRotate = wx.createAnimation({
        duration: 1000,
        timingFunction: 'linear',
        delay: 100,
        transformOrigin: 'center center'
      })
-     this.rotate()
+     this.animationRotateA = wx.createAnimation({
+       duration: 1000,
+       timingFunction: 'linear',
+       delay: 100,
+       transformOrigin: 'center center'
+     })
+     this.rotate();
+     this.rotateA();
    },
 
   /**

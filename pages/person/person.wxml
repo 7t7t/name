@@ -12,7 +12,7 @@
 <!-- 姓氏 -->
 <view class="box_shadow weui-cells__title list_title_a">
     <view class='width_50'>
-        <image src="{{icons.first}}" class='title_icon'></image>姓氏
+        <image animation="{{animationRotateA}}" src="{{icons.first}}" class='title_icon'></image>姓氏
     </view>
 </view>
 <view class='margin_left width_100  border_radius font_size14'>
@@ -44,7 +44,7 @@
     <!-- 第二个字 -->
     <view class='width_50 border_radius margin_left box font_size14 box_shadow'>
         <view class="bb line_height text_center">
-            <image src="{{icons.second}}" class='title_icon'></image>
+            <image animation="{{animationRotateA}}" src="{{icons.second}}" class='title_icon'></image>
         </view>
         <view class="weui-flex line_height">
             <view class="weui-flex__item padding_left_12">
@@ -56,7 +56,7 @@
     <!-- 第三个字 -->
     <view class='width_50 border_radius box margin_left font_size14 box_shadow'>
         <view class="bb line_height text_center">
-            <image src="{{icons.third}}" class='title_icon'></image>
+            <image animation="{{animationRotateA}}" src="{{icons.third}}" class='title_icon'></image>
         </view>
         <view class="weui-flex line_height">
             <view class="weui-flex__item padding_left_12">
@@ -74,7 +74,7 @@
 <view class="width_100 margin_top_24">
     <picker bindchange="bindPickerChange" value="{{index}}{{namesIndex}}" data-index="{{index}}" range="{{names}}">
         <view class='line_height font_size14 text_center list_title_d'>
-            <image animation="{{animation}}" src="{{icons.firstName}}" class='title_icon'></image>{{names[namesIndex]}}
+            <image animation="{{animationRotate}}" src="{{icons.firstName}}" class='title_icon'></image>{{names[namesIndex]}}
         </view>
         <button class='weui-btn bg_origin' type='primary' bindtap=''>确定</button>
     </picker>
