@@ -4,6 +4,9 @@
   margin-top: 0;
   color: #666;
 }
+.font_color{
+  color: #666;
+}
 .width_100{
   width: 98%;
   margin: 2px auto;
@@ -32,7 +35,7 @@
   font-size: 14px;
 }
 .max_height_80{
-  max-height: 80px;
+  max-height: 40px;
 }
 .line_height{
   line-height: 36px;
@@ -74,4 +77,7 @@
 }
 .float_left{
   float: left;
+}
+.clear_both{
+  clear: both;
 }

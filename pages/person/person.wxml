@@ -1,72 +1,84 @@
 <!--pages/person/person.wxml-->
-<view class='container'>
-  <!-- 姓氏 -->
-   <view class="width_100 box_shadow weui-cells__title">
-    <view class='width_50'>
-      <image src="{{icons.firstName}}" class='title_icon'></image>姓氏
+<view class='font_color'>
+    <!-- 姓氏 -->
+    <view class="box_shadow weui-cells__title">
+        <view class='width_50'>
+            <image src="{{icons.first}}" class='title_icon'></image>姓氏
+        </view>
     </view>
-  </view> 
-  <view class='box_shadow margin_top_24 border_radius font_size14'>
-    <view class="line_height bb border_radius">
-      <image src="{{icons.first}}" class='title_icon'></image>指定姓氏
+    <view class='margin_left width_100  border_radius font_size14'>
+         <!-- <view class="line_height bb border_radius">
+            <image src="{{icons.firstName}}" class='title_icon'></image>指定姓氏
+        </view>  -->
+        <view class="weui-flex line_height">
+            <view class="weui-flex__item padding_left_12">
+                <input class="" placeholder="输入姓氏" value="{{firstWord}}" id="firstWord" bindinput="setTexts"/>
+            </view>
+            <view class=" counter">{{firstWord.length}}/1</view>
+        </view>
     </view>
-    <view class="weui-flex line_height">
-      <view class="weui-flex__item padding_left_12"><input class="" placeholder="如需指定则输入" value="{{firstWord}}" id="firstWord" bindinput="setTexts"/></view>
-      <view class=" counter">{{firstWord.length}}/1</view>
+    <!-- 名字 -->
+    <view class="margin_top_24 width_100 box_shadow weui-cells__title">
+        <image src="{{icons.edit}}" class='title_icon'></image>您想要的字
     </view>
-  </view>
+    <view class="weui-flex width_100">
+        <view class='weui-flex__item'>
+            <textarea class="max_height_80 width_100 font_size14" placeholder="请输入文本" value="{{texts}}" id="texts" bindinput="setTexts"/>
+            <view class="counter font_size14 float_right">{{texts.length}}/200</view>
+        </view>
+    </view>
+    <!-- flex 布局 -->
+    <view class="margin_top_24 width_100 box_shadow weui-cells__title">
+        <image src="{{icons.all_a}}" class='title_icon'></image>指定相要的字
+    </view>
+    <view class="weui-flex margin_top_24 width_100">
+        <!-- 第二个字 -->
+        <view class='width_50 border_radius margin_left box font_size14 box_shadow'>
+            <view class="bb line_height">
+                <image src="{{icons.second}}" class='title_icon'></image>指定名字第二个字
+            </view>
+            <view class="weui-flex line_height">
+                <view class="weui-flex__item padding_left_12">
+                    <input class="" placeholder="如需指定则输入" value="{{secondWord}}" id="secondWord" bindinput="setTexts"/>
+                </view>
+                <view class="font_size14 counter">{{secondWord.length}}/1</view>
+            </view>
+        </view>
+        <!-- 第三个字 -->
+        <view class='width_50 border_radius box margin_left font_size14 box_shadow'>
+            <view class="bb line_height">
+                <image src="{{icons.third}}" class='title_icon'></image>指定名字第三个字
+            </view>
+            <view class="weui-flex line_height">
+                <view class="weui-flex__item padding_left_12">
+                    <input class="" placeholder="如需指定则输入" value="{{thirdWord}}" id="thirdWord" bindinput="setTexts"/>
+                </view>
+                <view class=" counter">{{thirdWord.length}}/1</view>
+            </view>
+        </view>
+    </view>
 
-  <!-- 名字 -->
-  <view class="margin_top_24 width_100 box_shadow weui-cells__title"><image src="{{icons.edit}}" class='title_icon'></image>您相要的字</view>
-  <view class="weui-flex width_100">
-    <view class='weui-flex__item'>
-      <textarea class="max_height_80 width_100 font_size14" placeholder="请输入文本" value="{{texts}}" id="texts" bindinput="setTexts"/>
-      <view class="counter font_size14 float_right">{{texts.length}}/200</view>
-    </view>
-  </view>
-  <!-- flex 布局 -->
-  <view class="margin_top_24 width_100 box_shadow weui-cells__title"><image src="{{icons.all_a}}" class='title_icon'></image>指定相要的字</view>
-  <view class="weui-flex margin_top_24 width_100">
-    <!-- 第二个字 -->
-    <view class='width_50 border_radius margin_left box font_size14 box_shadow'>
-      <view class="bb line_height">
-        <image src="{{icons.second}}" class='title_icon'></image>指定名字第二个字
-      </view>
-      <view class="weui-flex line_height">
-        <view class="weui-flex__item padding_left_12"><input class="" placeholder="如需指定则输入" value="{{secondWord}}" id="secondWord" bindinput="setTexts"/></view>
-        <view class="font_size14 counter">{{secondWord.length}}/1</view>
-      </view>
-    </view>
-    <!-- 第三个字 -->
-    <view class='width_50 border_radius box margin_left font_size14 box_shadow'>
-      <view class="bb line_height">
-        <image src="{{icons.third}}" class='title_icon'></image>指定名字第三个字
-      </view>
-      <view class="weui-flex line_height">
-        <view class="weui-flex__item padding_left_12"><input class="" placeholder="如需指定则输入" value="{{thirdWord}}" id="thirdWord" bindinput="setTexts"/></view>
-        <view class=" counter">{{thirdWord.length}}/1</view>
-      </view>
-    </view>
-  </view>
 
-
-  <!-- 生成按钮 -->
-  <!-- <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button> -->
-  <!-- 弹出展示 -->
-  <view class="width_100 margin_top_24">
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{names}}">
-      <button class='weui-btn' type='primary' bindtap='onClickBtn'>生成</button>
-    </picker>
-  </view>
-  <!-- 生成的列表 -->
-  <!-- <view wx:if="{{showList}}" class='width_100'>
-    <view wx:for="{{names}}" wx:key="{{1+index}}" wx:for-item="second">
-      <view  wx:for="{{names}}" wx:key="{{index}}" wx:for-item="third" wx:if="{{(second==secondWord && !thirdWord)||(third==thirdWord && !secondWord)||(second==secondWord && third==thirdWord) || (!secondWord && !thirdWord)}}" class="text_left width_100 weui-cells__title">
-        <image src="{{icons.firstName}}" class="title_icon"></image>
-        {{firstWord}}{{second}}{{third}}
-      </view>
+    <!-- 生成按钮 -->
+    <!-- <button class='weui-btn width_100' type='primary' bindtap='onClickBtn'>生成</button> -->
+    <!-- 弹出展示 -->
+    <view class="width_100 margin_top_24">
+        <picker bindchange="bindPickerChange" value="{{index}}" data-index="{{index}}" range="{{names}}">
+            <view class='font_size14'>
+                当前选择：{{names[namesIndex]}}
+            </view>
+            <button class='weui-btn' type='primary' bindtap=''>确定</button>
+        </picker>
     </view>
-  </view> -->
+    <!-- 生成的列表 -->
+<!-- <view wx:if="{{showList}}" class='width_100'>
+<view wx:for="{{names}}" wx:key="{{1+index}}" wx:for-item="second">
+<view  wx:for="{{names}}" wx:key="{{index}}" wx:for-item="third" wx:if="{{(second==secondWord && !thirdWord)||(third==thirdWord && !secondWord)||(second==secondWord && third==thirdWord) || (!secondWord && !thirdWord)}}" class="text_left width_100 weui-cells__title">
+<image src="{{icons.firstName}}" class="title_icon"></image>
+{{firstWord}}{{second}}{{third}}
+</view>
+</view>
+</view> -->
 
 
 </view>
